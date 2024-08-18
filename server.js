@@ -42,7 +42,6 @@ app.get('/api/notes', (req, res) => {
 
 // This API route is a POST Route for a new note
 app.post('/api/notes', (req, res) => {
-  console.log(req.body);
 
   const { title, text } = req.body;
 
@@ -58,6 +57,23 @@ app.post('/api/notes', (req, res) => {
   } else {
     res.error('Error adding note');
   }
+});
+
+//This API route is a DELETE Route to remove a note from the database
+app.delete('/api/notes/:note_id', (req, res) => {
+  const noteId = req.params.note_id;
+  readFromFile('./db/db.json')
+  .then((data) => JSON.parse(data))
+  .then((json) => {
+    // Make a new array of all notes filtering out the one with the ID
+    const result = json.filter((note) => note.id !== noteId);
+
+    // Save that array to the filesystem
+    writeToFile('./db/db.json', result);
+
+    // Respond to the DELETE request
+    res.json(`Item ${noteId} has been deleted 🗑️`);
+  });
 });
 
 // Wildcard route to direct users to to index.html
