@@ -26,7 +26,7 @@ As the application was developed using express.js, employing API end-points, the
 - A DELETE request for https://expressjs-notetaker.onrender.com/<note_id> will delete the note with a corresponding ID.
 
 ## Contributing
-All backend express.js code either written or refactored by Warren Shan. Front end starter code supplied by GIT user: Xandromus.
+All backend express.js code either written or refactored by Warren Shan. Front end starter code supplied by GIT user: Xandromus. Custom Middleware and helpers code taken directly from the Express Mini project (activity 28) solution.
   
 ## License
 None
